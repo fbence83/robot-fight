@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List of Robots | {{ parent() }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <a id="addbutton" class="btn btn-primary float-end" href="{{ path('robot_new') }}">Add robot</a>
+        <h1>List of robots</h1>
+
+
+        <script>
+
+            $(function (){
+                var robots = [];
+
+                $("#robotlist tbody tr").on("click", function (e){
+
+                    if (!$(e.target).is(".btn")) {
+                        e.preventDefault();
+
+                        $(this).toggleClass("selected");
+
+                        var id = $(this).data("id");
+
+                        robots = robots.filter(x => x !== id);
+
+                        if ($(this).is(".selected")) {
+                            robots.push(id);
+                        }
+                    }
+
+                });
+
+
+                $("#fightbutton").on("click", async function (e){
+                    e.preventDefault();
+
+                    if(robots.length != 2){
+                        alert("Select 2 robots to fight each other.");
+                    }else {
+
+                        let res = await fetch(`/robot/fight/?robotId1=${robots[0]}&robotId2=${robots[1]}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            }
+                        });
+
+                        if (res.ok) {
+                            res = await res.json();
+
+                            alert(`Winner: ${res.name}
+Datas: ${JSON.stringify(res)}`);
+
+                        }
+                    }
+                });
+
+
+
+            });
+        </script>
+
+
+        <table id="robotlist" class="table table-striped">
+            <thead>
+            <tr>
+
+
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Power</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody id="robot-table-body">
+            {% for robot in robots %}
+                <tr data-id="{{ robot.id }}">
+
+                    <td>{{ robot.name }}</td>
+                    <td>{{ robot.type }}</td>
+                    <td>{{ robot.power }}</td>
+                    <td>
+                        <a href="{{ path('robot_edit', {'id': robot.id}) }}" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <td>
+                        <form action="{{ path('robot_delete', {'id': robot.id}) }}" method="post" onsubmit="return confirm('Are you sure you want to delete this robot?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ robot.id) }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No robots found.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+        <span>
+            <a id="fightbutton" href="#" class="btn btn-primary">Fight</a>
+        </span>
+    </div>
+{% endblock %}

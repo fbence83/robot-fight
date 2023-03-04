@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Robot fight demo{% endblock %}</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark  mb-5" style="background-color: #27333A;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_homepage') }}">
+            <i class="fa-solid fa-robot"></i>
+            Robot fight demo
+        </a>
+
+
+    </div>
+</nav>
+<!-- End Main Navigation -->
+
+{% block body %}{% endblock %}
+
+<!-- Footer -->
+<div class="container mt-5">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <span class="me-1" style="color: red;"><i class="fa fa-star" aria-hidden="true"></i></span>
+            <span class="text-muted me-1">Let's fight</span>
+
+        </div>
+
+
+    </footer>
+</div>
+<!-- End Footer -->
+
+</body>
+</html>

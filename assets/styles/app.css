@@ -1,0 +1,21 @@
+@import '~bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import '~@fontsource/roboto-condensed';
+
+body {
+    background-color: #17242C;
+    color: #fff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+table tr, table tr td {
+    color: #fff!important;
+}
+
+.table tr.selected {
+    background-color: #ffc720;
+}
+
+.table tbody tr:hover {
+    cursor: pointer;
+}
