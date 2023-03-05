@@ -5,6 +5,9 @@ namespace App\Doctrine;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\Types;
 
+/**
+ * Doctrine mapeléshez használatos, az adatbázisbeli enum típusokat konvertája string primitív típusokká.
+ */
 abstract class CustomPlatform extends AbstractPlatform
 {
     public function getDoctrineTypeMapping($dbType)

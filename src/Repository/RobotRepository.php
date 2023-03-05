@@ -40,39 +40,4 @@ class RobotRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @throws NonUniqueResultException
-//     */
-//    public function findByName(string $name): ?Robot{
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.name = :name')
-//            ->setParameter('name', $name)
-//            ->getQuery()
-//            ->getOneOrNulLResult();
-//    }
-
-//    /**
-//     * @return Robot[] Returns an array of Robot objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Robot
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

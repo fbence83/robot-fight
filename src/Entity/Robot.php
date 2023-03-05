@@ -6,6 +6,9 @@ use App\Repository\RobotRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Robot adatmodell osztály.
+ */
 #[ORM\Entity(repositoryClass: RobotRepository::class)]
 class Robot
 {
@@ -48,6 +51,7 @@ class Robot
     private bool $isDeleted = false;
 
 
+    //getterek és setterek
     public function getId(): ?int
     {
         return $this->id;
