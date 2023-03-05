@@ -32,14 +32,15 @@ CREATE TABLE `robot` (
     `is_deleted` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Is deleted',
     PRIMARY KEY (`id`),
     UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='Robot'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='Robot';
 
 -- Tábla adatainak mentése robot_fight_demo.robot: ~5 rows (hozzávetőleg)
-INSERT INTO `robot` (`id`, `name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES (NULL, 'R2D2', 'brawler', 100, '2023-03-05 03:55:57', NULL, NULL, 0);
-INSERT INTO `robot` (`id`, `name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES (NULL, 'Terminator', 'rouge', 100000, '2023-03-05 03:56:08', '2023-03-05 03:58:42', '2023-03-05 03:58:42', 1);
-INSERT INTO `robot` (`id`, `name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES (NULL, 'C3PO', 'assault', 12, '2023-03-05 03:57:08', NULL, NULL, 0);
-INSERT INTO `robot` (`id`, `name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES (NULL, 'Destroyer', 'rouge', 11111, '2023-03-05 03:57:26', '2023-03-05 03:58:37', NULL, 0);
-INSERT INTO `robot` (`id`, `name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES (NULL, 'R4D4', 'brawler', 100, '2023-03-05 03:59:02', NULL, NULL, 0);
+INSERT INTO `robot` (`name`, `type`, `power`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES
+    ('R2D2', 'brawler', 100, '2023-03-05 03:55:57', NULL, NULL, 0),
+    ('Terminator', 'rouge', 100000, '2023-03-05 03:56:08', '2023-03-05 03:58:42', '2023-03-05 03:58:42', 1),
+    ('C3PO', 'assault', 12, '2023-03-05 03:57:08', NULL, NULL, 0),
+    ('Destroyer', 'rouge', 11111, '2023-03-05 03:57:26', '2023-03-05 03:58:37', NULL, 0),
+    ('R4D4', 'brawler', 100, '2023-03-05 03:59:02', NULL, NULL, 0);
 
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
